@@ -3,40 +3,90 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="https://glitch.com/favicon.ico" />
-    <title>Hello World!</title>
+    <title>Pop Ball AR</title>
     <link rel="stylesheet" href="/style.css" />
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene id="cena">
       <a-entity camera look-controls>
         <a-entity 
           cursor="fuse: true; fuseTimeOut: 2000"
           geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02;" 
           material="color: gold; shader: flat;"
           position="0 0 -1"
-          raycaster="objects: .raycastable;"></a-entity>
+          raycaster="objects: .raycastable;">
+        </a-entity>
       </a-entity>
       
-     <a-sky color="#445"></a-sky>
+      <!-- Música -->
+      <a-sound src="" autoplay="true" loop="true" volume="0.5"></a-sound>
+    
+      <!-- Cor de fundo -->
+      <a-sky color="#445"></a-sky>
       
-      <!-- Sol -->
+      <!-- Luz Ambiente -->
       <a-light type="ambient" color="#fff" intensity="1"></a-light>
       
       <!-- Lua -->
-      <a-sphere id="sol" position="0 6 -8.5" radius="1" color="#ffda8c" 
+      <a-sphere id="lua" position="0 6 -8.5" radius="1" color="#ffda8c" 
           light="type: point; intensity: 5; distance: 15; decay: 3; color: #f0bb4d">
       </a-sphere>
       
       <!-- Imagem de Luz na lua -->
-      <a-plane position="0 6.1 -8.6" rotation="0 0 0" width="10" height="10" 
-           material="src: https://cdn.glitch.global/cb0d683e-a64e-4988-b79e-4d1f3588d532/luz_sol.png?v=1729916396895; transparent: true; opacity: 0.5;">
+      <a-plane id="imageLight" position="0 8 -10.6" rotation="0 0 0" width="11" height="11" 
+           material="src: https://cdn.glitch.global/3f73e26f-922b-430b-8619-d23100e9b406/luz_sol.png?v=1730231449709; transparent: true; opacity: 0.5;">
       </a-plane>
+      
+      <!-- Tempo do jogo -->
+      <a-text
+        id="tempo"
+        value="60"
+        visible="false"
+        position="-0.05 4.35 -7"
+        scale="4 4 1"
+        align="center"
+        color="#f7fadc"
+        shader="msdf"
+        font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/kanit/Kanit-Regular.json">
+      </a-text>
+      
+      <!-- Botão de reset -->
+      <a-image
+        id="resetButton"
+        visible="false"
+        src="https://cdn.glitch.global/3f73e26f-922b-430b-8619-d23100e9b406/reset-icon.png?v=1730309852648"
+        width="1.1"
+        height="1.1"
+        position="0 5 -7"
+        rotation="20 0 0">
+      </a-image>
+      
+      <!-- Título do jogo -->
+      <a-text
+        id="title"
+        shader="msdf"
+        font="https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json"
+        value="Pop The Ball"
+        align="center"
+        position="0 0 -5"
+        scale="4 4 1">
+      </a-text>
+      
+      <!-- Botão de Iniciar -->
+      <a-image
+        id="powerButton"
+        class="raycastable"
+        src="https://cdn.glitch.global/3f73e26f-922b-430b-8619-d23100e9b406/power-icon.png?v=1730309413530"
+        width="1.5"
+        height="1.5"
+        position="0 5 -7"
+        rotation="20 0 0">
+      </a-image>
       
       <!-- Chão -->
       <a-plane
-        id="plano"
+        id="chao"
         position="0 -1 -2"
         width="10"
         height="10"
