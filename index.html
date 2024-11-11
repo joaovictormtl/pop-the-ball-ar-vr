@@ -3,46 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="https://glitch.com/favicon.ico" />
-    <title>Hello World!</title>
+    <title>Pop The Ball</title>
     <link rel="stylesheet" href="/style.css" />
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene id="cena">
       <a-entity camera look-controls>
         <a-entity 
-          cursor="fuse: true; fuseTimeOut: 2000"
+          cursor="fuse: true;"
           geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02;" 
           material="color: gold; shader: flat;"
           position="0 0 -1"
-          raycaster="objects: .raycastable;"></a-entity>
+          raycaster="objects: .raycastable;">
+        </a-entity>
       </a-entity>
-      
-     <a-sky color="#445"></a-sky>
-      
-      <!-- Sol -->
-      <a-light type="ambient" color="#fff" intensity="1"></a-light>
-      
-      <!-- Lua -->
-      <a-sphere id="sol" position="0 6 -8.5" radius="1" color="#ffda8c" 
-          light="type: point; intensity: 5; distance: 15; decay: 3; color: #f0bb4d">
-      </a-sphere>
-      
-      <!-- Imagem de Luz na lua -->
-      <a-plane position="0 6.1 -8.6" rotation="0 0 0" width="10" height="10" 
-           material="src: https://cdn.glitch.global/cb0d683e-a64e-4988-b79e-4d1f3588d532/luz_sol.png?v=1729916396895; transparent: true; opacity: 0.5;">
-      </a-plane>
-      
-      <!-- Chão -->
-      <a-plane
-        id="plano"
-        position="0 -1 -2"
-        width="10"
-        height="10"
-        color="#a7a7c7"
-        rotation="-90 0 0">
-      </a-plane>
     </a-scene>
   </body>
   <script src="/script.js" defer></script>
