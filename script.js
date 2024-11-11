@@ -11,7 +11,25 @@ function newGame() {
     cena.appendChild(ball);
 
     ball.addEventListener("mouseenter", () => {
-      ball.remove();
+     deleteBall(ball)
+      .then(() => {
+        ball.remove();
+      });
     });
   }, 500);
+}
+
+function deleteBall(ball) {
+  return new Promise((resolve) => {
+    // Configura a animação de opacidade
+    ball.setAttribute("animation", {
+      property: "material.opacity",
+      to: 0,
+      dur: 300,
+    });
+
+    setTimeout(()=>{
+      resolve();
+    }, 500);
+  });
 }
