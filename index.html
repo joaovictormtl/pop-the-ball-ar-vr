@@ -18,6 +18,32 @@
           raycaster="objects: .raycastable;">
         </a-entity>
       </a-entity>
+      
+      <!-- Cor de fundo -->
+      <a-sky color="#445"></a-sky>
+      
+      <!-- Luz Ambiente -->
+      <a-light type="ambient" color="#fff" intensity="1"></a-light>
+      
+      <!-- Lua -->
+      <a-sphere id="lua" position="0 6 -8.5" radius="1" color="#ffda8c" 
+          light="type: point; intensity: 5; distance: 15; decay: 3; color: #f0bb4d">
+      </a-sphere>
+      
+      <!-- Imagem de Luz na lua -->
+      <a-plane id="imageLight" position="0 8 -10.6" rotation="0 0 0" width="11" height="11" 
+           material="src: img/luz_lua.png; transparent: true; opacity: 0.5;">
+      </a-plane>
+      
+      <!-- Chão -->
+      <a-plane
+        id="chao"
+        position="0 -1 -2"
+        width="10"
+        height="10"
+        color="#a7a7c7"
+        rotation="-90 0 0">
+      </a-plane>
     </a-scene>
   </body>
   <script src="/script.js" defer></script>
