@@ -2,6 +2,9 @@ const cena = document.querySelector("#cena");
 let jogo = undefined;
 const tempo = cena.querySelector("#tempo");
 let segundos = 60;
+const chao = cena.querySelector("#chao");
+const resetButton = cena.querySelector("#resetButton");
+const imageLight = cena.querySelector("#imageLight");
 
 const cores = [
   "#77A6F7",
@@ -92,6 +95,38 @@ function deleteBall(ball) {
 
     setTimeout(()=>{
       resolve();
+    }, 500);
+  });
+}
+
+function endGame(){
+  // Tempo sumir e botão de reset aparecer só após o fim das animações 
+  setTimeout(()=>{
+    tempo.setAttribute("visible", "false");
+    resetButton.setAttribute("visible", "true");
+    resetButton.classList.add("raycastable");
+  }, 600);
+  
+  // As bolas param de aparecer
+  clearInterval(jogo);
+  
+  // Muda a cor e a opacidade das bolas
+  cena.querySelectorAll("a-sphere.raycastable").forEach(ball=>{
+    ball.classList.remove("raycastable");
+    ball.classList.add("remover");
+    
+    ball.setAttribute("animation__color", {
+      property: "color",
+      to: "#db5166",
+      dur: 300
+    });
+    
+    setTimeout(()=>{
+       ball.setAttribute("animation__opacity", {
+          property: "material.opacity",
+          to: 0.4,
+          dur: 300
+        });
     }, 500);
   });
 }
