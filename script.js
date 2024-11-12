@@ -1,6 +1,11 @@
 const cena = document.querySelector("#cena");
 let jogo = undefined;
 
+// Retorna um radius
+function getRadius() {
+  return Math.random() * (0.3 - 0.1) + 0.1;
+}
+
 // X = -3 até 3
 function getPositionX() {
   return (Math.random() * 6) - 3;
@@ -20,7 +25,7 @@ function newGame() {
   jogo = setInterval(() => {
     const ball = document.createElement("a-sphere");
     ball.setAttribute("class", "raycastable");
-    ball.setAttribute("radius", "0.3");
+    ball.setAttribute("radius", `${getRadius()}`);
     ball.setAttribute("color", "#333");
     ball.setAttribute("position", `${getPosition()} ${getPositionY()} ${getPositionZ()}`);
     cena.appendChild(ball);
