@@ -5,6 +5,7 @@ let segundos = 60;
 const chao = cena.querySelector("#chao");
 const resetButton = cena.querySelector("#resetButton");
 const imageLight = cena.querySelector("#imageLight");
+const lua = cena.querySelector("#lua");
 
 const cores = [
   "#77A6F7",
@@ -62,11 +63,15 @@ function iniciaTempo(){
 
     if(segundos < 0){
       clearInterval(intervalTempo);
+      endGame();
     }
   }, 1000); 
 }
 
 function newGame() {
+  tempo.setAttribute("visible", "true");
+  iniciaTempo();
+  
   jogo = setInterval(() => {
     const ball = document.createElement("a-sphere");
     ball.setAttribute("class", "raycastable");
@@ -109,6 +114,20 @@ function endGame(){
   
   // As bolas param de aparecer
   clearInterval(jogo);
+  
+  // Muda a cor do chão
+  chao.setAttribute("animation", {
+    property: "color",
+    to: "#db5166",
+    dur: 500
+  });
+  
+  // Muda a cor da Lua
+  lua.setAttribute("animation", {
+    property: "color",
+    to: "#db5166",
+    dur: 500
+  });
   
   // Muda a cor e a opacidade das bolas
   cena.querySelectorAll("a-sphere.raycastable").forEach(ball=>{
