@@ -1,5 +1,7 @@
 const cena = document.querySelector("#cena");
 let jogo = undefined;
+const tempo = cena.querySelector("#tempo");
+let segundos = 60;
 
 const cores = [
   "#77A6F7",
@@ -47,6 +49,18 @@ function getPositionY() {
 // Z = -1.2 até -3
 function getPositionZ() {
   return Math.random() * (-1.2 + 3) - 3;
+}
+
+function iniciaTempo(){
+  let intervalTempo = setInterval(()=>{
+    tempo.setAttribute("visible", "true");
+    tempo.setAttribute("value", `${segundos}`);
+    segundos--;
+
+    if(segundos < 0){
+      clearInterval(intervalTempo);
+    }
+  }, 1000); 
 }
 
 function newGame() {
