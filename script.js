@@ -1,6 +1,34 @@
 const cena = document.querySelector("#cena");
 let jogo = undefined;
 
+const cores = [
+  "#77A6F7",
+  "#FF9F68",
+  "#F8D49D",
+  "#5BC3EB",
+  "#B0DFE5",
+  "#5A879D",
+  "#7E6EAC",
+  "#F1D4D4",
+  "#9BC53D",
+  "#98B1A1",
+  "#DEB0B2",
+  "#E6B655",
+  "#D3A4FF",
+  "#7DD6BF",
+  "#C4D7ED",
+  "#F2A65A",
+  "#BC8F8F", 
+  "#8EAF3C",
+  "#EEC8E0",
+  "#8FAADC" 
+];
+
+// Retorna uma cor
+function getColor(){
+  return cores[Math.floor(Math.random() * cores.length)];
+}
+
 // Retorna um radius
 function getRadius() {
   return Math.random() * (0.3 - 0.1) + 0.1;
@@ -26,8 +54,8 @@ function newGame() {
     const ball = document.createElement("a-sphere");
     ball.setAttribute("class", "raycastable");
     ball.setAttribute("radius", `${getRadius()}`);
-    ball.setAttribute("color", "#333");
-    ball.setAttribute("position", `${getPosition()} ${getPositionY()} ${getPositionZ()}`);
+    ball.setAttribute("color", `${getColor()}`);
+    ball.setAttribute("position", `${getPositionX()} ${getPositionY()} ${getPositionZ()}`);
     cena.appendChild(ball);
 
     ball.addEventListener("mouseenter", () => {
