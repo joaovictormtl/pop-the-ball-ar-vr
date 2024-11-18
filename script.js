@@ -194,6 +194,10 @@ function endGame(){
         });
     }, 500);
   });
+  
+  setTimeout(()=>{
+    showScore();
+  }, 600);
 }
 
 function showScore(){
