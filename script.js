@@ -135,6 +135,7 @@ function newGame() {
     cena.appendChild(ball);
 
     ball.addEventListener("mouseenter", () => {
+      document.querySelector("#ball-sound").components.sound.playSound();
      deleteBall(ball)
       .then(() => {
         ball.remove();
