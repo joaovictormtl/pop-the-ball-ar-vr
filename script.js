@@ -31,6 +31,21 @@ const cores = [
   "#8FAADC" 
 ];
 
+const title = cena.querySelector("#title");
+const powerButton = cena.querySelector("#powerButton");
+
+window.addEventListener("load", ()=>{
+  powerButton.addEventListener("mouseenter", ()=>{
+    newGame();
+    powerButton.remove();
+    title.remove();
+  });
+  
+  resetButton.addEventListener("mouseenter", ()=>{
+    resetGame();
+  });
+});
+
 // Retorna uma cor
 function getColor(){
   return cores[Math.floor(Math.random() * cores.length)];
@@ -120,6 +135,7 @@ function newGame() {
     cena.appendChild(ball);
 
     ball.addEventListener("mouseenter", () => {
+      document.querySelector("#ball-sound").components.sound.playSound();
      deleteBall(ball)
       .then(() => {
         ball.remove();
@@ -194,6 +210,10 @@ function endGame(){
         });
     }, 500);
   });
+  
+  setTimeout(()=>{
+    showScore();
+  }, 600);
 }
 
 function showScore(){

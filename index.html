@@ -22,6 +22,9 @@
       <!-- Cor de fundo -->
       <a-sky color="#445"></a-sky>
       
+      <!-- Música -->
+      <a-sound src="music/Pufino - Thoughtful (freetouse.com).mp3" autoplay="true" loop="true" volume="0.5"></a-sound>
+      
       <!-- Luz Ambiente -->
       <a-light type="ambient" color="#fff" intensity="1"></a-light>
       
@@ -34,6 +37,17 @@
       <a-plane id="imageLight" position="0 8 -10.6" rotation="0 0 0" width="11" height="11" 
            material="src: img/luz_lua.png; transparent: true; opacity: 0.5;">
       </a-plane>
+      
+      <!-- Botão de Iniciar -->
+      <a-image
+        id="powerButton"
+        class="raycastable"
+        src="img/power-icon.png"
+        width="1.5"
+        height="1.5"
+        position="0 5 -7"
+        rotation="20 0 0">
+      </a-image>
       
       <!-- Título do jogo -->
       <a-text
@@ -79,6 +93,9 @@
         color="#a7a7c7"
         rotation="-90 0 0">
       </a-plane>
+      
+      <!-- Som das Esferas -->
+      <a-entity id="ball-sound" sound=" src: url(https://cdn.glitch.global/1dc5745b-0057-4497-9d5c-5ea097bd2caf/ball-sound.wav?v=1730865834989); poolSize: 5;"></a-entity>
     </a-scene>
   </body>
   <script src="/script.js" defer></script>
