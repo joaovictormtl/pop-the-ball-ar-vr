@@ -6,6 +6,7 @@ const chao = cena.querySelector("#chao");
 const resetButton = cena.querySelector("#resetButton");
 const imageLight = cena.querySelector("#imageLight");
 const lua = cena.querySelector("#lua");
+let pontos = 0;
 
 const cores = [
   "#77A6F7",
@@ -155,4 +156,16 @@ function endGame(){
         });
     }, 500);
   });
+}
+
+function showScore(){
+  const score = document.createElement("a-text");
+  score.setAttribute("id", "score");
+  score.setAttribute("value", `${pontos} Pontos`);
+  score.setAttribute("position", "0 0 -5");
+  score.setAttribute("scale", "4 4 1");
+  score.setAttribute("shader", "msdf");
+  score.setAttribute("font", "https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json");
+  score.setAttribute("align", "center");
+  cena.appendChild(score);
 }
