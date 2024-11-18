@@ -6,6 +6,7 @@ const chao = cena.querySelector("#chao");
 const resetButton = cena.querySelector("#resetButton");
 const imageLight = cena.querySelector("#imageLight");
 const lua = cena.querySelector("#lua");
+let pontos = 0;
 
 const cores = [
   "#77A6F7",
@@ -129,6 +130,13 @@ function endGame(){
     dur: 500
   });
   
+  // Muda a cor da imagem de fundo da lua
+  imageLight.setAttribute("material", "src: img/luz_end.png; transparent: true; opacity: 0.5;");
+
+  // Muda a cor da luz da lua que a lua emana
+  lua.setAttribute("light", "type: point; intensity: 10; distance: 20; decay: 3; color: #DB5166");
+
+  
   // Muda a cor e a opacidade das bolas
   cena.querySelectorAll("a-sphere.raycastable").forEach(ball=>{
     ball.classList.remove("raycastable");
@@ -148,4 +156,16 @@ function endGame(){
         });
     }, 500);
   });
+}
+
+function showScore(){
+  const score = document.createElement("a-text");
+  score.setAttribute("id", "score");
+  score.setAttribute("value", `${pontos} Pontos`);
+  score.setAttribute("position", "0 0 -5");
+  score.setAttribute("scale", "4 4 1");
+  score.setAttribute("shader", "msdf");
+  score.setAttribute("font", "https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/anton/Anton-Regular.json");
+  score.setAttribute("align", "center");
+  cena.appendChild(score);
 }
