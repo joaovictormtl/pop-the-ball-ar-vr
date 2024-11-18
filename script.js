@@ -69,6 +69,44 @@ function iniciaTempo(){
   }, 1000); 
 }
 
+function resetGame(){
+  tempo.setAttribute("visible", "true");
+  resetButton.setAttribute("visible", "false");
+  resetButton.classList.remove("raycastable");
+  cena.querySelector("#score").remove();
+  
+  // A imagem de luz volta a ser a inicial
+  imageLight.setAttribute("material", "src: img/luz_lua.png; transparent: true; opacity: 0.5;");
+  
+  // A luz da lua volta ser amarela
+  lua.setAttribute("light", "type: point; intensity: 5; distance: 15; decay: 3; color: #f0bb4d");
+  
+  // Muda a cor do chão
+  chao.setAttribute("animation", {
+    property: "color",
+    to: "#a7a7c7",
+    dur: 500
+  });
+  
+  // Muda a cor da Lua
+  lua.setAttribute("animation", {
+    property: "color",
+    to: "#ffda8c",
+    dur: 500
+  });
+  
+  cena.querySelectorAll("a-sphere.remover").forEach(ball=>{
+    deleteBall(ball)
+      .then(()=>{
+        ball.remove();
+    });
+  });
+  
+  pontos = 0;
+  segundos = 60;
+  newGame();
+}
+
 function newGame() {
   tempo.setAttribute("visible", "true");
   iniciaTempo();
