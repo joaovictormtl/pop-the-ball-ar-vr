@@ -129,6 +129,13 @@ function endGame(){
     dur: 500
   });
   
+  // Muda a cor da imagem de fundo da lua
+  imageLight.setAttribute("material", "src: img/luz_end.png; transparent: true; opacity: 0.5;");
+
+  // Muda a cor da luz da lua que a lua emana
+  lua.setAttribute("light", "type: point; intensity: 10; distance: 20; decay: 3; color: #DB5166");
+
+  
   // Muda a cor e a opacidade das bolas
   cena.querySelectorAll("a-sphere.raycastable").forEach(ball=>{
     ball.classList.remove("raycastable");
